@@ -9,7 +9,7 @@ import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/theme-provider";
 
 function App() {
-  const { user, setUser } = useUser();
+  const { setUser } = useUser();
 
   useEffect(() => {
     const userInfo = localStorage.getItem("userInfo");

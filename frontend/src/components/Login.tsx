@@ -33,7 +33,7 @@ const Login = () => {
     setPwd("1234");
   };
 
-  const handleLogin = async (event) => {
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!email || !pwd) return;
     try {

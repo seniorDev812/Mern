@@ -3,6 +3,16 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Eye, EyeOff } from "lucide-react";
 
+interface PwdInputProps {
+  id: string;
+  name?: string;
+  pwd: string;
+  setPwd: (value: string) => void;
+  match?: number;
+  placeholder?: string;
+  dialog?: number;
+}
+
 const PwdInput = ({
   id,
   name = "Password",
@@ -11,7 +21,7 @@ const PwdInput = ({
   match = 0,
   placeholder = "Insta Password",
   dialog = 0,
-}) => {
+}: PwdInputProps) => {
   const [isPwdVisible, setIsPwdVisible] = useState(false);
   return (
     <>

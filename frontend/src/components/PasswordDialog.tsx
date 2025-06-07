@@ -13,7 +13,11 @@ import useAxios from "@/hooks/useAxios";
 import { LoaderCircle } from "lucide-react";
 import PwdInput from "./PwdInput";
 
-const PasswordDialog = ({ setPwdDialog }) => {
+interface PasswordDialogProps {
+  setPwdDialog: (value: boolean) => void;
+}
+
+const PasswordDialog = ({ setPwdDialog }: PasswordDialogProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [match, setMatch] = useState(0);
   const [oldPwd, setOldPwd] = useState("");
@@ -33,7 +37,7 @@ const PasswordDialog = ({ setPwdDialog }) => {
     return () => clearTimeout(timer);
   }, [pwd, confirmPwd]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!oldPwd || match === 2 || match === 0) return;
     try {

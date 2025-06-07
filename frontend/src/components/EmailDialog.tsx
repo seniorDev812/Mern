@@ -15,14 +15,18 @@ import useAxios from "@/hooks/useAxios";
 import { LoaderCircle } from "lucide-react";
 import PwdInput from "@/components/PwdInput";
 
-const EmailDialog = ({ setEmailDialog }) => {
+interface EmailDialogProps {
+  setEmailDialog: (value: boolean) => void;
+}
+
+const EmailDialog = ({ setEmailDialog }: EmailDialogProps) => {
   const { user } = useUser();
-  const [email, setEmail] = useState(user.email);
+  const [email, setEmail] = useState(user?.email || '');
   const [pwd, setPwd] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const axios = useAxios();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     try {
@@ -30,7 +34,7 @@ const EmailDialog = ({ setEmailDialog }) => {
         newEmail: email,
         password: pwd,
       });
-      setEmail(user.email);
+      setEmail(user?.email || '');
       setPwd("");
       setEmailDialog(false);
     } catch (error) {
