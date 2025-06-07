@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import useUser from "@/context/User/UserHook";
 import { Routes, Route } from "react-router-dom";
+import useUser from "./context/User/useUser";
 import { Toaster } from "@/components/ui/toaster";
 import Auth from "@/components/Auth";
 import ProtectedComp from "@/components/ProtectedComp";
